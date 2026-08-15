@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>WebStudio - Izrada sajtova</title>
 
 <style>
@@ -30,7 +29,6 @@ header {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #252d45;
-    background: #0b1020;
 }
 
 .logo {
@@ -44,17 +42,13 @@ nav a {
     margin-left: 20px;
 }
 
-nav a:hover {
-    color: #5b8cff;
-}
-
 .hero {
     text-align: center;
     padding: 100px 20px;
 }
 
 .hero h1 {
-    font-size: 52px;
+    font-size: 50px;
     margin-bottom: 20px;
 }
 
@@ -80,10 +74,6 @@ nav a:hover {
     font-weight: bold;
 }
 
-.button:hover {
-    background: #416fd9;
-}
-
 .section {
     padding: 70px 7%;
     text-align: center;
@@ -107,15 +97,9 @@ nav a:hover {
     border-radius: 18px;
     width: 290px;
     padding: 30px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-7px);
 }
 
 .card h3 {
-    font-size: 21px;
     margin-bottom: 12px;
 }
 
@@ -146,7 +130,6 @@ footer {
 }
 
 @media (max-width: 650px) {
-
     header {
         justify-content: center;
     }
@@ -155,16 +138,8 @@ footer {
         display: none;
     }
 
-    .hero {
-        padding: 75px 20px;
-    }
-
     .hero h1 {
         font-size: 38px;
-    }
-
-    .section {
-        padding: 55px 20px;
     }
 }
 </style>
@@ -173,38 +148,31 @@ footer {
 <body>
 
 <header>
-
-    <div class="logo">
-        WebStudio
-    </div>
+    <div class="logo">WebStudio</div>
 
     <nav>
         <a href="#usluge">Usluge</a>
         <a href="#cene">Cene</a>
         <a href="#kontakt">Kontakt</a>
     </nav>
-
 </header>
 
 <section class="hero">
-
-    <h1>
-        Moderan sajt za <span>vaš biznis.</span>
-    </h1>
+    <h1>Moderan sajt za <span>vaš biznis.</span></h1>
 
     <p>
         Izrađujemo moderne, brze i profesionalne web sajtove
         za restorane, salone, prodavnice i male biznise.
     </p>
 
-    <a href="#kontakt" class="button">
+    <a
+        href="mailto:vuk.markovic3001@gmail.com?subject=Želim%20da%20napravim%20sajt"
+        class="button">
         Zatražite sajt
     </a>
-
 </section>
 
 <section class="section" id="usluge">
-
     <h2>Naše usluge</h2>
 
     <div class="cards">
@@ -212,92 +180,69 @@ footer {
         <div class="card">
             <h3>💻 Izrada sajta</h3>
             <p>
-                Moderan sajt prilagođen vašem poslu,
-                brendu i potrebama.
+                Moderan sajt prilagođen vašem poslu i potrebama.
             </p>
         </div>
 
         <div class="card">
             <h3>📱 Mobilni dizajn</h3>
             <p>
-                Sajt koji izgleda odlično na telefonu,
-                tabletu i računaru.
+                Sajt koji izgleda odlično na telefonu i računaru.
             </p>
         </div>
 
         <div class="card">
             <h3>⚡ Brz sajt</h3>
             <p>
-                Jednostavan i brz sajt koji se brzo učitava.
+                Brz i jednostavan sajt koji se lako koristi.
             </p>
         </div>
 
     </div>
-
 </section>
 
 <section class="section" id="cene">
-
     <h2>Paketi</h2>
 
     <div class="cards">
 
         <div class="card">
             <h3>Starter</h3>
-            <p>
-                Jednostavan sajt za mali biznis.
-            </p>
-            <div class="price">
-                od 50 €
-            </div>
+            <p>Jednostavan sajt za mali biznis.</p>
+            <div class="price">od 50 €</div>
         </div>
 
         <div class="card">
             <h3>Business</h3>
-            <p>
-                Kompletan sajt sa više sekcija
-                i profesionalnim dizajnom.
-            </p>
-            <div class="price">
-                od 100 €
-            </div>
+            <p>Kompletan sajt sa više sekcija.</p>
+            <div class="price">od 100 €</div>
         </div>
 
         <div class="card">
             <h3>Premium</h3>
-            <p>
-                Napredniji dizajn i dodatne funkcije
-                po dogovoru.
-            </p>
-            <div class="price">
-                od 200 €
-            </div>
+            <p>Napredniji dizajn i dodatne funkcije.</p>
+            <div class="price">od 200 €</div>
         </div>
 
     </div>
-
 </section>
 
 <section class="section contact" id="kontakt">
-
     <h2>Želite svoj sajt?</h2>
 
     <p>
-        Kontaktirajte nas i napravite prvi korak
-        ka boljem online prisustvu.
+        Pošaljite nam poruku i dogovorite izradu sajta.
     </p>
 
-    <a href="mailto:vuk.markovic3001@gmail.com?subject=Želim%20da%20napravim%20sajt" class="button">
-    Zatražite sajt
-</a>
-
-
+    <a
+        class="button"
+        href="mailto:vuk.markovic3001@gmail.com?subject=Upit%20za%20izradu%20sajta">
+        ✉️ Pošaljite upit
+    </a>
 </section>
 
 <footer>
-
     © 2026 WebStudio - Izrada web sajtova
-
 </footer>
 
 </body>
