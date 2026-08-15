@@ -287,9 +287,10 @@ footer {
         ka boljem online prisustvu.
     </p>
 
-    <a class="button" href="mailto:kontakt@example.com">
-        ✉️ Kontaktirajte nas
-    </a>
+    <a href="mailto:vuk.markovic3001@gmail.com?subject=Želim%20da%20napravim%20sajt" class="button">
+    Zatražite sajt
+</a>
+
 
 </section>
 
