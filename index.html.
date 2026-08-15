@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WebStudio | Izrada sajtova</title>
+<title>WebStudio - Izrada sajtova</title>
 
 <style>
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -25,11 +25,12 @@ body {
 }
 
 header {
-    padding: 20px 8%;
+    padding: 20px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #252d45;
+    background: #0b1020;
 }
 
 .logo {
@@ -44,7 +45,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #6d9cff;
+    color: #5b8cff;
 }
 
 .hero {
@@ -53,7 +54,7 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: 50px;
+    font-size: 52px;
     margin-bottom: 20px;
 }
 
@@ -65,13 +66,13 @@ nav a:hover {
     max-width: 650px;
     margin: auto;
     color: #b8c0d4;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .button {
     display: inline-block;
     margin-top: 30px;
-    padding: 15px 28px;
+    padding: 15px 30px;
     background: #5b8cff;
     color: white;
     text-decoration: none;
@@ -80,37 +81,37 @@ nav a:hover {
 }
 
 .button:hover {
-    background: #4778e8;
+    background: #416fd9;
 }
 
 .section {
-    padding: 70px 8%;
+    padding: 70px 7%;
     text-align: center;
 }
 
 .section h2 {
-    font-size: 34px;
+    font-size: 35px;
     margin-bottom: 40px;
 }
 
 .cards {
     display: flex;
-    gap: 25px;
     justify-content: center;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .card {
     background: #151c32;
-    padding: 30px;
+    border: 1px solid #29334f;
     border-radius: 18px;
     width: 290px;
-    border: 1px solid #29334f;
-    transition: transform 0.2s;
+    padding: 30px;
+    transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
 }
 
 .card h3 {
@@ -125,8 +126,8 @@ nav a:hover {
 .price {
     margin-top: 18px;
     font-size: 25px;
-    font-weight: bold;
     color: #5b8cff;
+    font-weight: bold;
 }
 
 .contact {
@@ -185,7 +186,6 @@ footer {
 
 </header>
 
-
 <section class="hero">
 
     <h1>
@@ -193,4 +193,21 @@ footer {
     </h1>
 
     <p>
-        Izrađujemo moderne,
+        Izrađujemo moderne, brze i profesionalne web sajtove
+        za restorane, salone, prodavnice i male biznise.
+    </p>
+
+    <a href="#kontakt" class="button">
+        Zatražite sajt
+    </a>
+
+</section>
+
+<section class="section" id="usluge">
+
+    <h2>Naše usluge</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <
