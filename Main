@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WebStudio — Premium Web Design</title>
+
+<meta name="description" content="WebStudio — moderni i premium web sajtovi za biznise, brendove i preduzetnike.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+    --bg:#06070b;
+    --bg2:#0b0d14;
+    --card:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.11);
+    --text:#f7f8ff;
+    --muted:#9da4b7;
+    --accent:#7c6cff;
+    --accent2:#a78bfa;
+    --green:#5eead4;
+    --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+.light{
+    --bg:#f7f8fc;
+    --bg2:#ffffff;
+    --card:rgba(0,0,0,.035);
+    --border:rgba(0,0,0,.1);
+    --text:#10121a;
+    --muted:#5d6473;
+    --shadow:0 25px 70px rgba(20,20,40,.12);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    transition:.3s;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* NAV */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    padding:18px 0;
+    background:rgba(6,7,11,.65);
+    backdrop-filter:blur(22px);
+    border-bottom:1px solid var(--border);
+}
+
+.light header{
+    background:rgba(255,255,255,.7);
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:-1.5px;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+nav a{
+    font-size:13px;
+    color:var(--muted);
+    transition:.25s;
+}
+
+nav a:hover{
+    color:var(--text);
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    border-radius:50%;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent);
+}
+
+.menu-btn{
+    display:none;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    padding-top:100px;
+}
+
+.orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(1px);
+    pointer-events:none;
+}
+
+.orb.one{
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,rgba(124,108,255,.25),transparent 65%);
+    top:-200px;
+    left:-180px;
+}
+
+.orb.two{
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(94,234,212,.12),transparent 65%);
+    right:-180px;
+    bottom:-100px;
+}
+
+.grid-bg{
+    position:absolute;
+    inset:0;
+    opacity:.18;
+    background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    border:1px solid var(--border);
+    background:var(--card);
+    padding:9px 14px;
+    border-radius:100px;
+    color:#b7afff;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:26px;
+    animation:fadeUp .8s both;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+    background:var(--green);
+    border-radius:50%;
+    box-shadow:0 0 15px var(--green);
+}
+
+.hero h1{
+    font-size:clamp(48px,8vw,92px);
+    line-height:.98;
+    letter-spacing:-5px;
+    max-width:1000px;
+    animation:fadeUp .8s .1s both;
+}
+
+.gradient{
+    background:linear-gradient(100deg,#7c6cff,#a78bfa,#5eead4);
+    background-size:200%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradient 5s ease infinite;
+}
+
+.hero-description{
+    max-width:690px;
+    color:var(--muted);
+    font-size:18px;
+    margin:28px 0 34px;
+    animation:fadeUp .8s .2s both;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    animation:fadeUp .8s .3s both;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:15px 22px;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:800;
+    border:1px solid var(--border);
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--text);
+    color:var(--bg);
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(124,108,255,.25);
+}
+
+.btn-ghost{
+    background:var(--card);
+    color:var(--text);
+}
+
+.btn-ghost:hover{
+    border-color:var(--accent);
+    transform:translateY(-3px);
+}
+
+.hero-stats{
+    display:flex;
+    gap:35px;
+    margin-top:55px;
+    animation:fadeUp .8s .4s both;
+}
+
+.stat strong{
+    font-size:26px;
+    display:block;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* SECTIONS */
+
+section{
+    padding:115px 0;
+}
+
+.section-head{
+    max-width:720px;
+    margin-bottom:55px;
+}
+
+.center{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.kicker{
+    color:#9288ff;
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:13px;
+}
+
+.section-head h2{
+    font-size:clamp(34px,5vw,56px);
+    line-height:1.05;
+    letter-spacing:-3px;
+    margin-bottom:18px;
+}
+
+.section-head p{
+    color:var(--muted);
+    font-size:16px;
+}
+
+/* SERVICES */
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:30px;
+    backdrop-filter:blur(15px);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(124,108,255,.55);
+    box-shadow:var(--shadow);
+}
+
+.service-icon{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,rgba(124,108,255,.22),rgba(94,234,212,.1));
+    font-size:25px;
+    margin-bottom:25px;
+}
+
+.card h3{
+    font-size:19px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* MARQUEE */
+
+.marquee{
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:20px 0;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.marquee-track{
+    display:inline-flex;
+    gap:45px;
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-weight:800;
+    font-size:13px;
+    color:var(--muted);
+}
+
+.marquee b{
+    color:var(--accent);
+}
+
+/* PORTFOLIO */
+
+.portfolio{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:18px;
+}
+
+.project{
+    min-height:330px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(135deg,#171b32,#0c101d);
+    transition:.4s;
+}
+
+.project:nth-child(1){
+    grid-column:span 7;
+}
+
+.project:nth-child(2){
+    grid-column:span 5;
+}
+
+.project:nth-child(3){
+    grid-column:span 5;
+}
+
+.project:nth-child(4){
+    grid-column:span 7;
+}
+
+.project:hover{
+    transform:translateY(-7px) scale(1.01);
+    box-shadow:var(--shadow);
+}
+
+.project-bg{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:100px;
+    opacity:.2;
+}
+
+.project-info{
+    position:absolute;
+    left:28px;
+    right:28px;
+    bottom:25px;
+    z-index:2;
+}
+
+.project-info small{
+    color:#a99fff;
+    font-weight:800;
+}
+
+.project-info h3{
+    font-size:28px;
+    margin:5px 0;
+}
+
+.project-info p{
+    color:#aeb5c8;
+    font-size:13px;
+}
+
+/* PROCESS */
+
+.process{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.process-card{
+    position:relative;
+    padding:28px;
+    border:1px solid var(--border);
+    border-radius:22px;
+    background:var(--card);
+}
+
+.process-number{
+    color:#777;
+    font-size:12px;
+    margin-bottom:40px;
+}
+
+.process-card h3{
+    margin-bottom:10px;
+}
+
+/* PRICING */
+
+.pricing-wrap{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.price-card{
+    position:relative;
+    padding:34px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:var(--card);
+}
+
+.price-card.featured{
+    border-color:#7c6cff;
+    box-shadow:0 0 70px rgba(124,108,255,.13);
+}
+
+.ribbon{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:#7c6cff;
+    padding:6px 10px;
+    border-radius:30px;
+    font-size:10px;
+    font-weight:900;
+}
+
+.price{
+    font-size:42px;
+    font-weight:900;
+    margin:20px 0;
+}
+
+.price small{
+    color:var(--muted);
+    font-size:13px;
+    font-weight:500;
+}
+
+.features{
+    list-style:none;
+    margin:25px 0;
+}
+
+.features li{
+    color:var(--muted);
+    margin:12px 0;
+    font-size:13px;
+}
+
+.features li::first-letter{
+    color:var(--green);
+}
+
+/* STATS */
+
+.stats-section{
+    background:var(--bg2);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.big-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    text-align:center;
+}
+
+.big-stat strong{
+    font-size:48px;
+    letter-spacing:-2px;
+}
+
+.big-stat span{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* FAQ */
+
+.faq{
+    max-width:850px;
+    margin:auto;
+}
+
+details{
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:16px;
+    margin-bottom:12px;
+    padding:21px 24px;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:700;
+    font-size:14px;
+}
+
+details p{
+    color:var(--muted);
+    padding-top:15px;
+    font-size:13px;
+}
+
+/* CTA */
+
+.cta{
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+}
+
+.cta-box{
+    border:1px solid var(--border);
+    border-radius:30px;
+    padding:75px 30px;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(124,108,255,.25),transparent 50%),
+        var(--card);
+}
+
+.cta h2{
+    font-size:clamp(38px,5vw,62px);
+    letter-spacing:-3px;
+    margin-bottom:18px;
+}
+
+.cta p{
+    color:var(--muted);
+    max-width:600px;
+    margin:0 auto 30px;
+}
+
+/* CONTACT */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.contact-info h2{
+    font-size:50px;
+    letter-spacing:-3px;
+    margin-bottom:18px;
+}
+
+.contact-info p{
+    color:var(--muted);
+    max-width:500px;
+}
+
+.contact-email{
+    display:inline-block;
+    margin-top:25px;
+    color:#a69cff;
+    font-weight:800;
+}
+
+.contact-form{
+    padding:30px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:var(--card);
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field label{
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+    width:100%;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:var(--text);
+    padding:14px;
+    border-radius:11px;
+    outline:none;
+    font-family:inherit;
+}
+
+.field textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:var(--accent);
+}
+
+footer{
+    padding:35px 0;
+    border-top:1px solid var(--border);
+}
+
+.footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.footer-row p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .8s,transform .8s;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+.lang-en{
+    display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    nav.open{
+        display:flex;
+        position:absolute;
+        top:75px;
+        left:4%;
+        right:4%;
+        flex-direction:column;
+        padding:25px;
+        background:var(--bg2);
+        border:1px solid var(--border);
+        border-radius:20px;
+    }
+
+    .service-grid,
+    .pricing-wrap{
+        grid-template-columns:1fr;
+    }
+
+    .process{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .big-stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .portfolio{
+        grid-template-columns:1fr;
+    }
+
+    .project:nth-child(n){
+        grid-column:span 1;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:80px 0;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .hero-description{
+        font-size:16px;
+    }
+
+    .hero-stats{
+        gap:20px;
+        flex-wrap:wrap;
+    }
+
+    .process{
+        grid-template-columns:1fr;
+    }
+
+    .big-stat strong{
+        font-size:36px;
+    }
+
+    .contact-info h2{
+        font-size:40px;
+    }
+
+    .footer-row{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes gradient{
+    0%,100%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+}
+
+@keyframes marquee{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a href="#" class="logo">Web<span>Studio</span></a>
+
+<nav id="nav">
+<a href="#usluge">Usluge</a>
+<a href="#radovi">Radovi</a>
+<a href="#proces">Proces</a>
+<a href="#cene">Cene</a>
+<a href="#faq">FAQ</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+
+<div class="nav-actions">
+
+<button class="icon-btn" id="langBtn">EN</button>
+<button class="icon-btn" id="themeBtn">☀</button>
+<button class="icon-btn menu-btn" id="menuBtn">☰</button>
+
+</div>
+
+</div>
+</header>
+
+
+<section class="hero">
+
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="grid-bg"></div>
+
+<div class="container hero-content">
+
+<div class="eyebrow">
+<span class="dot"></span>
+Dostupni za nove projekte
+</div>
+
+<h1>
+Web sajt koji izgleda
+<span class="gradient">ozbiljno.</span>
+</h1>
+
+<p class="hero-description">
+Pravimo moderne, brze i profesionalne web sajtove
+koji vašem biznisu daju snažno online prisustvo.
+Od prve ideje do objavljivanja.
+</p>
+
+<div class="buttons">
+
+<a class="btn btn-primary"
+href="mailto:vuk.markovic3001@gmail.com?subject=Zainteresovan%20sam%20za%20izradu%20sajta">
+Zatražite sajt →
+</a>
+
+<a class="btn btn-ghost" href="#radovi">
+Pogledajte radove
+</a>
+
+</div>
+
+<div class="hero-stats">
+
+<div class="stat">
+<strong>3+</strong>
+<span>Dana za jednostavniji sajt</span>
+</div>
+
+<div class="stat">
+<strong>100%</strong>
+<span>Mobilno prilagođeno</span>
+</div>
+
+<div class="stat">
+<strong>24/7</strong>
+<span>Online prisustvo</span>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<div class="marquee">
+<div class="marquee-track">
+
+<span>WEB DESIGN</span><b>✦</b>
+<span>RESPONSIVE</span><b>✦</b>
+<span>MODERN UI</span><b>✦</b>
+<span>FAST WEBSITES</span><b>✦</b>
+<span>WEB DESIGN</span><b>✦</b>
+<span>RESPONSIVE</span><b>✦</b>
+<span>MODERN UI</span><b>✦</b>
+<span>FAST WEBSITES</span><b>✦</b>
+
+</div>
+</div>
+
+
+<section id="usluge">
+
+<div class="container">
+
+<div class="section-head center reveal">
+<div class="kicker">Usluge</div>
+<h2>Sve što je potrebno za premium online prisustvo.</h2>
+<p>
+Ne pravimo samo stranicu. Pravimo kompletno iskustvo
+za vaše posetioce.
+</p>
+</div>
+
+<div class="service-grid">
+
+<div class="card reveal">
+<div class="service-icon">✦</div>
+<h3>Premium dizajn</h3>
+<p>
+Moderan vizuelni identitet, pažljivo odabrane boje,
+tipografija i raspored elemenata.
+</p>
+</div>
+
+<div class="card reveal">
+<div class="service-icon">⌁</div>
+<h3>Responsive</h3>
+<p>
+Sajt se prilagođava telefonu, tabletu, laptopu i velikim ekranima.
+</p>
+</div>
+
+<div class="card reveal">
+<div class="service-icon">⚡</div>
+<h3>Brzina</h3>
+<p>
+Optimizovana struktura i lagan kod za brzo učitavanje.
+</p>
+</div>
+
+<div class="card reveal">
+<div class="service-icon">▣</div>
+<h3>Galerija</h3>
+<p>
+Prikažite proizvode, apartmane, radove, prostor ili usluge.
+</p>
+</div>
+
+<div class="card reveal">
+<div class="service-icon">◎</div>
+<h3>Kontakt</h3>
+<p>
+Email, telefon, društvene mreže, lokacija i jasna CTA dugmad.
+</p>
+</div>
+
+<div class="card reveal">
+<div class="service-icon">↗</div>
+<h3>SEO osnova</h3>
+<p>
+Struktura sajta pripremljena da pretraživači mogu pravilno da je čitaju.
+</p>
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<section id="radovi">
+
+<div class="container">
+
+<div class="section-head reveal">
+<div class="kicker">Portfolio</div>
+<h2>Jedan studio. Mnogo mogućnosti.</h2>
+<p>
+Primeri tipova projekata koje možemo prilagoditi vašem biznisu.
+</p>
+</div>
+
+<div class="portfolio">
+
+<div class="project reveal">
+<div class="project-bg">🏠</div>
+<div class="project-info">
+<small>SMEŠTAJ</small>
+<h3>Premium Apartmani</h3>
+<p>Galerija · sadržaji · lokacija · kontakt</p>
+</div>
+</div>
+
+<div class="project reveal">
+<div class="project-bg">🍽️</div>
+<div class="project-info">
+<small>UGOSTITELJSTVO</small>
+<h3>Restoran</h3>
+<p>Meni · galerija · rezervacija</p>
+</div>
+</div>
+
+<div class="project reveal">
+<div class="project-bg">💎</div>
+<div class="project-info">
+<small>BRAND</small>
+<h3>Fashion & Jewelry</h3>
+<p>Proizvodi · priča · kontakt</p>
+</div>
+</div>
+
+<div class="project reveal">
+<div class="project-bg">🚘</div>
+<div class="project-info">
+<small>AUTO</small>
+<h3>Detailing Studio</h3>
+<p>Usluge · paketi · galerija · kontakt</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="dark" id="proces">
+
+<div class="container">
+
+<div class="section-head center reveal">
+<div class="kicker">Proces</div>
+<h2>Od ideje do sajta.</h2>
+<p>
+Jednostavan proces bez nepotrebne komplikacije.
+</p>
+</div>
+
+<div class="process">
+
+<div class="process-card reveal">
+<div class="process-number">01 / DISCOVER</div>
+<h3>Razgovor</h3>
+<p>
+Saznajemo šta vaš biznis radi i šta želite od sajta.
+</p>
+</div>
+
+<div class="process-card reveal">
+<div class="process-number">02 / DESIGN</div>
+<h3>Dizajn</h3>
+<p>
+Biramo stil, strukturu, sadržaj i vizuelni pravac.
+</p>
+</div>
+
+<div class="process-card reveal">
+<div class="process-number">03 / BUILD</div>
+<h3>Izrada</h3>
+<p>
+Pretvaramo dogovoreni koncept u funkcionalan sajt.
+</p>
+</div>
+
+<div class="process-card reveal">
+<div class="process-number">04 / LAUNCH</div>
+<h3>Objava</h3>
+<p>
+Sajt se priprema za objavljivanje i korišćenje.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="cene">
+
+<div class="container">
+
+<div class="section-head center reveal">
+<div class="kicker">Paketi</div>
+<h2>Izaberi nivo koji ti odgovara.</h2>
+<p>
+Cene su okvirne. Konačna ponuda zavisi od zahteva projekta.
+</p>
+</div>
+
+<div class="pricing-wrap">
+
+<div class="price-card reveal">
+
+<h3>Starter</h3>
+<p>Za jednostavno online prisustvo.</p>
+
+<div class="price">50€</div>
+
+<ul class="features">
+<li>✓ Jedna stranica</li>
+<li>✓ Premium osnovni dizajn</li>
+<li>✓ Mobilna verzija</li>
+<li>✓ Kontakt dugme</li>
+<li>✓ Osnovna galerija</li>
+</ul>
+
+<a class="btn btn-ghost"
+href="mailto:vuk.markovic3001@gmail.com?subject=Starter%20paket">
+Zatraži ponudu
+</a>
+
+</div>
+
+
+<div class="price-card featured reveal">
+
+<div class="ribbon">POPULARNO</div>
+
+<h3>Business</h3>
+<p>Za ozbiljan biznis i brend.</p>
+
+<div class="price">100€</div>
+
+<ul class="features">
+<li>✓ Više sekcija</li>
+<li>✓ Premium dizajn</li>
+<li>✓ Galerija</li>
+<li>✓ Kontakt</li>
+<li>✓ Mobilna optimizacija</li>
+<li>✓ Animacije</li>
+</ul>
+
+<a class="btn btn-primary"
+href="mailto:vuk.markovic3001@gmail.com?subject=Business%20paket">
+Zatraži ponudu
+</a>
+
+</div>
+
+
+<div class="price-card reveal">
+
+<h3>Premium</h3>
+<p>Za napredniji projekat.</p>
+
+<div class="price">200€</div>
+
+<ul class="features">
+<li>✓ Više stranica</li>
+<li>✓ Napredni dizajn</li>
+<li>✓ Animacije</li>
+<li>✓ Galerija</li>
+<li>✓ 
