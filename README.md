@@ -4,9 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WebStudio | Moderni web sajtovi</title>
+<title>WebStudio — Digital Experiences</title>
+
+<meta name="description" content="WebStudio — premium web dizajn i digitalna iskustva za moderne biznise.">
+<meta name="theme-color" content="#050507">
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+    --bg:#050507;
+    --surface:#0b0b10;
+    --surface2:#111117;
+    --text:#f7f7f8;
+    --muted:#8d8e99;
+    --line:rgba(255,255,255,.09);
+    --accent:#8b7cff;
+    --accent2:#5eead4;
+    --white:#fff;
+    --max:1240px;
+}
+
 *{
     margin:0;
     padding:0;
@@ -18,11 +36,19 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#070b16;
-    color:#fff;
-    line-height:1.6;
+    font-family:"DM Sans",sans-serif;
+    background:var(--bg);
+    color:var(--text);
     overflow-x:hidden;
+}
+
+body.light{
+    --bg:#f5f5f7;
+    --surface:#fff;
+    --surface2:#ececf1;
+    --text:#101014;
+    --muted:#666875;
+    --line:rgba(0,0,0,.09);
 }
 
 a{
@@ -30,10 +56,35 @@ a{
     text-decoration:none;
 }
 
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
 .container{
-    width:min(1150px,92%);
+    width:min(var(--max),92%);
     margin:auto;
 }
+
+/* PROGRESS */
+
+#progress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:3px;
+    width:0;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    z-index:99999;
+}
+
+/* HEADER */
 
 header{
     position:fixed;
@@ -41,10 +92,14 @@ header{
     left:0;
     width:100%;
     z-index:1000;
-    padding:18px 0;
-    background:rgba(7,11,22,.82);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(255,255,255,.08);
+    padding:20px 0;
+    transition:.35s;
+}
+
+header.scrolled{
+    background:rgba(5,5,7,.72);
+    backdrop-filter:blur(22px);
+    border-bottom:1px solid var(--line);
 }
 
 .nav{
@@ -54,29 +109,51 @@ header{
 }
 
 .logo{
+    font-family:"Space Grotesk";
+    font-weight:700;
     font-size:25px;
-    font-weight:800;
-    letter-spacing:-1px;
+    letter-spacing:-1.5px;
 }
 
 .logo span{
-    color:#6d8cff;
+    color:var(--accent);
 }
 
 nav{
     display:flex;
-    gap:25px;
+    gap:28px;
 }
 
 nav a{
-    color:#bfc7dc;
-    font-size:14px;
-    transition:.3s;
+    color:var(--muted);
+    font-size:13px;
+    transition:.25s;
 }
 
 nav a:hover{
-    color:#fff;
+    color:var(--text);
 }
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.round{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--text);
+}
+
+.menu{
+    display:none;
+}
+
+/* HERO */
 
 .hero{
     min-height:100vh;
@@ -84,262 +161,583 @@ nav a:hover{
     align-items:center;
     position:relative;
     overflow:hidden;
-    background:
-    radial-gradient(circle at 20% 20%,rgba(82,111,255,.28),transparent 35%),
-    radial-gradient(circle at 80% 60%,rgba(130,60,255,.18),transparent 30%),
-    #070b16;
+    padding:150px 0 90px;
 }
 
-.hero:before{
-    content:"";
+.grid{
     position:absolute;
-    width:500px;
-    height:500px;
-    border:1px solid rgba(255,255,255,.05);
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,#000,transparent 85%);
+}
+
+.orb{
+    position:absolute;
     border-radius:50%;
-    right:-180px;
-    top:100px;
+    pointer-events:none;
+}
+
+.orb1{
+    width:650px;
+    height:650px;
+    left:-260px;
+    top:-260px;
+    background:radial-gradient(circle,rgba(139,124,255,.23),transparent 68%);
+    filter:blur(15px);
+}
+
+.orb2{
+    width:600px;
+    height:600px;
+    right:-280px;
+    bottom:-300px;
+    background:radial-gradient(circle,rgba(94,234,212,.11),transparent 68%);
+    filter:blur(20px);
 }
 
 .hero-content{
-    max-width:850px;
-    padding-top:70px;
-    animation:fadeUp 1s ease;
+    position:relative;
+    z-index:3;
+    max-width:1100px;
 }
 
-.badge{
-    display:inline-block;
-    padding:8px 14px;
-    border:1px solid rgba(109,140,255,.4);
-    background:rgba(109,140,255,.08);
-    border-radius:50px;
-    color:#9db1ff;
-    font-size:13px;
-    margin-bottom:22px;
+.available{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.035);
+    border-radius:100px;
+    padding:9px 14px;
+    color:#b9b3ff;
+    font-size:11px;
+    margin-bottom:26px;
+    animation:rise .8s both;
+}
+
+.status{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--accent2);
+    box-shadow:0 0 15px var(--accent2);
 }
 
 .hero h1{
-    font-size:clamp(44px,7vw,78px);
-    line-height:1.02;
-    letter-spacing:-3px;
-    margin-bottom:25px;
+    font-family:"Space Grotesk";
+    font-size:clamp(55px,9vw,112px);
+    line-height:.9;
+    letter-spacing:-7px;
+    max-width:1100px;
+    animation:rise .8s .08s both;
 }
 
-.gradient{
-    background:linear-gradient(90deg,#6d8cff,#a77bff);
+.hero h1 em{
+    font-style:normal;
+    background:linear-gradient(100deg,#fff,#9d91ff,#5eead4);
     -webkit-background-clip:text;
     color:transparent;
 }
 
-.hero p{
-    max-width:690px;
-    color:#aeb7cb;
-    font-size:19px;
-    margin-bottom:32px;
+.hero-copy{
+    max-width:700px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.75;
+    margin:32px 0;
+    animation:rise .8s .16s both;
 }
 
-.buttons{
+.actions{
     display:flex;
-    gap:14px;
+    gap:12px;
     flex-wrap:wrap;
+    animation:rise .8s .24s both;
 }
 
 .btn{
-    padding:15px 23px;
-    border-radius:11px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:15px 22px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    font-size:13px;
     font-weight:700;
-    transition:.3s;
-    display:inline-block;
-}
-
-.btn-primary{
-    background:#6d8cff;
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-}
-
-.btn-secondary{
-    border:1px solid #303a56;
-    background:#11182b;
-}
-
-.btn-secondary:hover{
-    background:#19223b;
-}
-
-section{
-    padding:100px 0;
-}
-
-.section-title{
-    text-align:center;
-    max-width:700px;
-    margin:0 auto 55px;
-}
-
-.section-title h2{
-    font-size:42px;
-    margin-bottom:12px;
-}
-
-.section-title p{
-    color:#9ea8bd;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.card{
-    background:linear-gradient(145deg,#11182a,#0c1220);
-    border:1px solid #222d47;
-    border-radius:20px;
-    padding:30px;
     transition:.35s;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#596fc2;
+.btn-main{
+    background:var(--text);
+    color:var(--bg);
 }
 
-.icon{
+.btn-main:hover{
+    transform:translateY(-5px);
+    box-shadow:0 25px 60px rgba(139,124,255,.2);
+}
+
+.btn-outline{
+    background:rgba(255,255,255,.035);
+}
+
+.btn-outline:hover{
+    border-color:var(--accent);
+    transform:translateY(-5px);
+}
+
+.hero-meta{
+    display:flex;
+    gap:42px;
+    margin-top:55px;
+    animation:rise .8s .32s both;
+}
+
+.hero-meta strong{
+    display:block;
+    font-family:"Space Grotesk";
+    font-size:25px;
+}
+
+.hero-meta span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* FLOATING CARD */
+
+.floating-card{
+    position:absolute;
+    right:5%;
+    bottom:11%;
+    width:270px;
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:rgba(15,15,22,.65);
+    backdrop-filter:blur(20px);
+    box-shadow:0 30px 100px rgba(0,0,0,.4);
+    transform:rotate(4deg);
+    animation:float 5s ease-in-out infinite;
+}
+
+.mini-screen{
+    height:130px;
+    border-radius:13px;
+    background:
+        radial-gradient(circle at 75% 20%,rgba(94,234,212,.4),transparent 25%),
+        linear-gradient(135deg,#292453,#11121b);
+    position:relative;
+    overflow:hidden;
+}
+
+.mini-screen:after{
+    content:"";
+    position:absolute;
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.15);
+    right:-35px;
+    top:-35px;
+}
+
+.floating-bottom{
+    display:flex;
+    justify-content:space-between;
+    margin-top:13px;
+    font-size:11px;
+}
+
+.floating-bottom span{
+    color:var(--muted);
+}
+
+/* GENERAL */
+
+section{
+    padding:125px 0;
+}
+
+.section-head{
+    max-width:760px;
+    margin-bottom:55px;
+}
+
+.center{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.kicker{
+    color:#a79fff;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+.section-head h2{
+    font-family:"Space Grotesk";
+    font-size:clamp(40px,5.5vw,68px);
+    line-height:.98;
+    letter-spacing:-4px;
+    margin-bottom:18px;
+}
+
+.section-head p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.service{
+    border:1px solid var(--line);
+    border-radius:25px;
+    background:linear-gradient(145deg,var(--surface),rgba(255,255,255,.02));
+    padding:31px;
+    transition:.4s;
+}
+
+.service:hover{
+    transform:translateY(-9px);
+    border-color:rgba(139,124,255,.5);
+    box-shadow:0 35px 90px rgba(0,0,0,.28);
+}
+
+.service-icon{
     width:54px;
     height:54px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:15px;
-    background:#182342;
-    font-size:25px;
-    margin-bottom:20px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,rgba(139,124,255,.2),rgba(94,234,212,.07));
+    font-size:24px;
+    margin-bottom:25px;
 }
 
-.card h3{
-    font-size:21px;
+.service h3{
+    font-family:"Space Grotesk";
+    font-size:20px;
     margin-bottom:10px;
 }
 
-.card p{
-    color:#9da7bb;
+.service p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.75;
 }
 
-.dark{
-    background:#0b101d;
+/* TICKER */
+
+.ticker{
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:21px 0;
 }
 
-.pricing .card{
+.ticker-track{
+    width:max-content;
+    display:flex;
+    gap:42px;
+    animation:marquee 27s linear infinite;
+}
+
+.ticker span{
+    color:var(--muted);
+    font-family:"Space Grotesk";
+    font-size:13px;
+    font-weight:600;
+}
+
+.ticker b{
+    color:var(--accent);
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:17px;
+}
+
+.project{
     position:relative;
+    min-height:430px;
+    border-radius:28px;
+    border:1px solid var(--line);
+    overflow:hidden;
+    background:var(--surface);
+    transition:.45s;
 }
 
-.price{
-    font-size:38px;
-    font-weight:800;
-    margin:18px 0;
-    color:#7f9aff;
+.project:nth-child(1),
+.project:nth-child(4){
+    grid-column:span 7;
 }
 
-.card ul{
-    list-style:none;
-    color:#b5bfd2;
-    margin:20px 0;
+.project:nth-child(2),
+.project:nth-child(3){
+    grid-column:span 5;
 }
 
-.card li{
-    margin:10px 0;
+.project:hover{
+    transform:translateY(-9px) scale(1.01);
 }
 
-.featured{
-    border:1px solid #6d8cff;
-    transform:scale(1.03);
+.project-visual{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    font-size:120px;
+    opacity:.14;
+    background:
+        radial-gradient(circle at 50% 30%,rgba(139,124,255,.28),transparent 55%);
 }
 
-.featured:hover{
-    transform:scale(1.03) translateY(-8px);
+.project-ui{
+    position:absolute;
+    width:68%;
+    height:55%;
+    top:11%;
+    left:16%;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:13px;
+    background:rgba(255,255,255,.035);
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+    transform:perspective(900px) rotateX(8deg);
+    padding:12px;
+}
+
+.project-ui div{
+    height:7px;
+    border-radius:10px;
+    background:rgba(255,255,255,.1);
+    margin-bottom:8px;
+}
+
+.project-ui div:nth-child(1){width:35%}
+.project-ui div:nth-child(2){width:85%;height:40px}
+.project-ui div:nth-child(3){width:70%}
+.project-ui div:nth-child(4){width:55%}
+
+.project-info{
+    position:absolute;
+    left:29px;
+    right:29px;
+    bottom:26px;
+    z-index:2;
+}
+
+.project-tag{
+    color:#aaa2ff;
+    font-size:9px;
+    letter-spacing:2px;
+    font-weight:700;
+}
+
+.project-info h3{
+    font-family:"Space Grotesk";
+    font-size:30px;
+    margin:6px 0;
+}
+
+.project-info p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* PROCESS */
+
+.process{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.process-card{
+    padding:29px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:var(--surface);
+    transition:.35s;
+}
+
+.process-card:hover{
+    transform:translateY(-6px);
+}
+
+.process-number{
+    color:#666;
+    font-size:10px;
+    margin-bottom:50px;
+}
+
+.process-card h3{
+    font-family:"Space Grotesk";
+    margin-bottom:9px;
+}
+
+.process-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* PRICING */
+
+.pricing{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.price-card{
+    position:relative;
+    border:1px solid var(--line);
+    border-radius:25px;
+    background:var(--surface);
+    padding:33px;
+}
+
+.price-card.featured{
+    border-color:var(--accent);
+    box-shadow:0 0 90px rgba(139,124,255,.12);
 }
 
 .popular{
     position:absolute;
-    top:18px;
-    right:18px;
-    font-size:11px;
-    background:#6d8cff;
-    padding:5px 9px;
-    border-radius:20px;
-}
-
-.portfolio{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.project{
-    min-height:240px;
-    border-radius:20px;
-    padding:30px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    border:1px solid #29334d;
-    overflow:hidden;
-    position:relative;
-    background:linear-gradient(135deg,#172347,#10182b);
-}
-
-.project:before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(transparent,rgba(0,0,0,.65));
-}
-
-.project-content{
-    position:relative;
-    z-index:2;
-}
-
-.project h3{
-    font-size:24px;
-}
-
-.project p{
-    color:#b9c2d5;
-}
-
-.steps{
-    max-width:850px;
-    margin:auto;
-}
-
-.step{
-    display:flex;
-    gap:20px;
-    padding:25px;
-    margin-bottom:18px;
-    background:#11182a;
-    border:1px solid #222d47;
-    border-radius:17px;
-}
-
-.step-number{
-    min-width:48px;
-    height:48px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#6d8cff;
+    top:19px;
+    right:19px;
+    background:var(--accent);
+    border-radius:50px;
+    padding:6px 10px;
+    font-size:8px;
     font-weight:800;
 }
 
-.step p{
-    color:#9da7bb;
+.price{
+    font-family:"Space Grotesk";
+    font-size:44px;
+    font-weight:700;
+    margin:20px 0;
 }
+
+.price-card p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.features{
+    list-style:none;
+    margin:25px 0;
+}
+
+.features li{
+    color:var(--muted);
+    font-size:13px;
+    margin:12px 0;
+}
+
+/* CALCULATOR */
+
+.calculator{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    align-items:stretch;
+}
+
+.calc-box{
+    border:1px solid var(--line);
+    border-radius:25px;
+    background:var(--surface);
+    padding:32px;
+}
+
+.calc-option{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border:1px solid var(--line);
+    padding:16px;
+    border-radius:13px;
+    margin-bottom:10px;
+}
+
+.calc-option label{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.calc-option input{
+    accent-color:var(--accent);
+    width:18px;
+    height:18px;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-top:30px;
+}
+
+.total span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.total strong{
+    font-family:"Space Grotesk";
+    font-size:48px;
+}
+
+/* STATS */
+
+.stats{
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    text-align:center;
+}
+
+.stat strong{
+    font-family:"Space Grotesk";
+    font-size:50px;
+    letter-spacing:-3px;
+}
+
+.stat span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* FAQ */
 
 .faq{
     max-width:850px;
@@ -347,101 +745,292 @@ section{
 }
 
 details{
-    background:#11182a;
-    border:1px solid #222d47;
-    border-radius:14px;
-    margin-bottom:14px;
-    padding:20px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:21px 24px;
+    margin-bottom:10px;
 }
 
 summary{
     cursor:pointer;
     font-weight:700;
+    font-size:14px;
 }
 
 details p{
-    color:#9da7bb;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
     padding-top:14px;
 }
 
-.contact{
-    background:
-    radial-gradient(circle at 50% 0%,rgba(109,140,255,.2),transparent 45%),
-    #0b101d;
+/* CTA */
+
+.cta{
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:95px 25px;
     text-align:center;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(139,124,255,.25),transparent 50%),
+        var(--surface);
 }
 
-.contact-box{
-    max-width:750px;
-    margin:auto;
+.cta h2{
+    font-family:"Space Grotesk";
+    font-size:clamp(43px,6vw,75px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:20px;
 }
 
-.contact-box h2{
-    font-size:45px;
-    margin-bottom:15px;
+.cta p{
+    color:var(--muted);
+    max-width:600px;
+    margin:0 auto 30px;
+    line-height:1.7;
 }
 
-.contact-box p{
-    color:#aeb7cb;
-    margin-bottom:30px;
+/* CONTACT */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.contact h2{
+    font-family:"Space Grotesk";
+    font-size:57px;
+    line-height:.98;
+    letter-spacing:-3.5px;
+    margin-bottom:20px;
+}
+
+.contact-description{
+    color:var(--muted);
+    max-width:520px;
+    line-height:1.7;
 }
 
 .email{
     display:inline-block;
-    margin-top:20px;
-    color:#8da5ff;
+    margin-top:24px;
+    color:#aaa1ff;
     font-weight:700;
 }
 
-footer{
-    padding:30px 0;
-    border-top:1px solid #202a40;
-    color:#7f899f;
-    text-align:center;
-    font-size:14px;
+.form{
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-radius:25px;
+    padding:30px;
 }
 
-@keyframes fadeUp{
+.field{
+    margin-bottom:14px;
+}
+
+.field label{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+    width:100%;
+    padding:14px;
+    color:var(--text);
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--line);
+    border-radius:11px;
+    outline:none;
+}
+
+.field textarea{
+    min-height:125px;
+    resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:var(--accent);
+}
+
+.form .btn{
+    width:100%;
+    border:0;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:35px 0;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer p{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* CURSOR */
+
+.cursor{
+    position:fixed;
+    width:18px;
+    height:18px;
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:999999;
+    transform:translate(-50%,-50%);
+    transition:width .2s,height .2s;
+    mix-blend-mode:difference;
+}
+
+.cursor.big{
+    width:45px;
+    height:45px;
+}
+
+/* ANIMATIONS */
+
+@keyframes rise{
     from{
         opacity:0;
         transform:translateY(25px);
     }
-
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:none;
     }
 }
 
-@media(max-width:800px){
+@keyframes float{
+    0%,100%{transform:rotate(4deg) translateY(0)}
+    50%{transform:rotate(2deg) translateY(-14px)}
+}
+
+@keyframes marquee{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
 
     nav{
         display:none;
     }
 
-    .grid,
-    .portfolio{
+    .menu{
+        display:block;
+    }
+
+    nav.open{
+        display:flex;
+        position:absolute;
+        top:75px;
+        left:4%;
+        right:4%;
+        flex-direction:column;
+        padding:25px;
+        background:var(--surface);
+        border:1px solid var(--line);
+        border-radius:20px;
+    }
+
+    .floating-card{
+        display:none;
+    }
+
+    .services,
+    .pricing{
         grid-template-columns:1fr;
     }
 
+    .process{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .calculator,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .project:nth-child(n){
+        grid-column:span 1;
+    }
+
+    .cursor{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:85px 0;
+    }
+
     .hero h1{
-        letter-spacing:-2px;
+        letter-spacing:-4px;
     }
 
-    .section-title h2{
-        font-size:34px;
+    .hero-meta{
+        flex-wrap:wrap;
+        gap:22px;
     }
 
-    .featured{
-        transform:none;
+    .process{
+        grid-template-columns:1fr;
     }
 
-    .featured:hover{
-        transform:translateY(-8px);
+    .contact h2{
+        font-size:43px;
     }
 
-    .contact-box h2{
-        font-size:34px;
+    .footer{
+        flex-direction:column;
+        gap:14px;
+        text-align:center;
     }
 }
 </style>
@@ -449,21 +1038,28 @@ footer{
 
 <body>
 
-<header>
+<div id="progress"></div>
+<div class="cursor" id="cursor"></div>
+
+<header id="header">
 <div class="container nav">
 
-<div class="logo">
-Web<span>Studio</span>
-</div>
+<a href="#" class="logo">Web<span>Studio</span></a>
 
-<nav>
+<nav id="nav">
 <a href="#usluge">Usluge</a>
-<a href="#cene">Cene</a>
-<a href="#rad">Primeri</a>
+<a href="#radovi">Radovi</a>
 <a href="#proces">Proces</a>
+<a href="#cene">Cene</a>
 <a href="#faq">FAQ</a>
 <a href="#kontakt">Kontakt</a>
 </nav>
+
+<div class="nav-actions">
+<button class="round" id="theme">☼</button>
+<button class="round" id="language">EN</button>
+<button class="round menu" id="menu">☰</button>
+</div>
 
 </div>
 </header>
@@ -471,420 +1067,129 @@ Web<span>Studio</span>
 
 <section class="hero">
 
+<div class="grid"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
 <div class="container hero-content">
 
-<div class="badge">
-🚀 Moderni web sajtovi za biznise
+<div class="available">
+<span class="status"></span>
+Otvoreni za nove projekte
 </div>
 
 <h1>
-Vaš biznis.<br>
-Vaš <span class="gradient">profesionalni sajt.</span>
+Web koji izgleda
+<br>
+<span><em>skuplje nego što košta.</em></span>
 </h1>
 
-<p>
-Izrađujemo moderne, brze i mobilno prilagođene web sajtove
-koji vašem biznisu daju profesionalan online izgled.
+<p class="hero-copy">
+Pravimo moderne i profesionalne web sajtove za restorane,
+apartmane, salone, brendove i male biznise — sa fokusom na
+izgled, brzinu i jednostavno iskustvo za korisnika.
 </p>
 
-<div class="buttons">
+<div class="actions">
+<a href="#kontakt" class="btn btn-main">Započni projekat →</a>
+<a href="#radovi" class="btn btn-outline">Pogledaj portfolio</a>
+</div>
 
-<a class="btn btn-primary"
-href="mailto:vuk.markovic3001@gmail.com?subject=Upit%20za%20izradu%20sajta">
-Zatražite sajt →
-</a>
-
-<a class="btn btn-secondary" href="#rad">
-Pogledajte primere
-</a>
+<div class="hero-meta">
+<div>
+<strong>100%</strong>
+<span>Responsive</span>
+</div>
+<div>
+<strong>24/7</strong>
+<span>Online prisustvo</span>
+</div>
+<div>
+<strong>1:1</strong>
+<span>Prilagođeno biznisu</span>
+</div>
+</div>
 
 </div>
 
+
+<div class="floating-card">
+<div class="mini-screen"></div>
+<div class="floating-bottom">
+<strong>Digital Experience</strong>
+<span>WebStudio</span>
+</div>
 </div>
 
 </section>
+
+
+<div class="ticker">
+<div class="ticker-track">
+<span>WEB DESIGN</span><b>✦</b>
+<span>MODERN UI</span><b>✦</b>
+<span>RESPONSIVE</span><b>✦</b>
+<span>BRANDING</span><b>✦</b>
+<span>FAST WEBSITES</span><b>✦</b>
+<span>WEB DESIGN</span><b>✦</b>
+<span>MODERN UI</span><b>✦</b>
+<span>RESPONSIVE</span><b>✦</b>
+<span>BRANDING</span><b>✦</b>
+<span>FAST WEBSITES</span><b>✦</b>
+</div>
+</div>
 
 
 <section id="usluge">
 
 <div class="container">
 
-<div class="section-title">
-<h2>Sve što vašem sajtu treba</h2>
+<div class="section-head reveal">
+<div class="kicker">01 / Usluge</div>
+<h2>Ne pravimo samo sajt. Pravimo utisak.</h2>
 <p>
-Od modernog dizajna do jednostavnog kontakta sa vašim klijentima.
+Svaki element ima svoju svrhu — od prvog pogleda do trenutka
+kada posetilac odluči da vas kontaktira.
 </p>
 </div>
 
-<div class="grid">
+<div class="services">
 
-<div class="card">
-<div class="icon">🎨</div>
-<h3>Moderan dizajn</h3>
+<div class="service reveal">
+<div class="service-icon">✦</div>
+<h3>Premium dizajn</h3>
 <p>
-Profesionalan izgled prilagođen vašem brendu, bojama i stilu.
+Pažljivo odabrana tipografija, boje, spacing i vizuelna hijerarhija
+za ozbiljan i moderan izgled.
 </p>
 </div>
 
-<div class="card">
-<div class="icon">📱</div>
-<h3>100% prilagođen telefonu</h3>
+<div class="service reveal">
+<div class="service-icon">⌁</div>
+<h3>Responsive</h3>
 <p>
-Sajt izgleda dobro na telefonu, tabletu i računaru.
+Sajt se automatski prilagođava telefonu, tabletu, laptopu i velikom ekranu.
 </p>
 </div>
 
-<div class="card">
-<div class="icon">⚡</div>
-<h3>Brzo učitavanje</h3>
+<div class="service reveal">
+<div class="service-icon">⚡</div>
+<h3>Brzina</h3>
 <p>
-Optimizovan dizajn bez nepotrebnog opterećenja.
+Optimizovana struktura bez nepotrebnog opterećenja za bolje korisničko iskustvo.
 </p>
 </div>
 
-<div class="card">
-<div class="icon">🖼️</div>
+<div class="service reveal">
+<div class="service-icon">▣</div>
 <h3>Galerija</h3>
 <p>
-Prikažite proizvode, apartmane, restoran, radove ili usluge.
+Atraktivno predstavljanje proizvoda, apartmana, hrane, prostora ili radova.
 </p>
 </div>
 
-<div class="card">
-<div class="icon">📍</div>
-<h3>Lokacija</h3>
-<p>
-Jednostavno predstavljanje adrese i lokacije vašeg biznisa.
-</p>
-</div>
-
-<div class="card">
-<div class="icon">✉️</div>
+<div class="service reveal">
+<div class="service-icon">◎</div>
 <h3>Kontakt</h3>
 <p>
-Klijenti vas mogu brzo kontaktirati putem emaila ili telefona.
-</p>
-</div>
-
-</div>
-</div>
-
-</section>
-
-
-<section class="dark" id="cene">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Jednostavni paketi</h2>
-<p>
-Izaberite paket prema potrebama vašeg biznisa.
-</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Starter</h3>
-
-<p>
-Za male biznise kojima treba jednostavno online prisustvo.
-</p>
-
-<div class="price">50 €</div>
-
-<ul>
-<li>✓ Jedna stranica</li>
-<li>✓ Moderan dizajn</li>
-<li>✓ Mobilna verzija</li>
-<li>✓ Kontakt dugme</li>
-</ul>
-
-<a class="btn btn-secondary"
-href="mailto:vuk.markovic3001@gmail.com?subject=Starter%20paket">
-Izaberite Starter
-</a>
-
-</div>
-
-
-<div class="card featured">
-
-<div class="popular">NAJPOPULARNIJI</div>
-
-<h3>Business</h3>
-
-<p>
-Za biznise kojima treba kompletna prezentacija.
-</p>
-
-<div class="price">100 €</div>
-
-<ul>
-<li>✓ Više sekcija</li>
-<li>✓ Galerija</li>
-<li>✓ Mobilna verzija</li>
-<li>✓ Kontakt</li>
-<li>✓ Profesionalni dizajn</li>
-</ul>
-
-<a class="btn btn-primary"
-href="mailto:vuk.markovic3001@gmail.com?subject=Business%20paket">
-Izaberite Business
-</a>
-
-</div>
-
-
-<div class="card">
-
-<h3>Premium</h3>
-
-<p>
-Za detaljniji sajt sa naprednijim dizajnom.
-</p>
-
-<div class="price">200 €</div>
-
-<ul>
-<li>✓ Više stranica</li>
-<li>✓ Napredniji dizajn</li>
-<li>✓ Galerija</li>
-<li>✓ Animacije</li>
-<li>✓ Dodatne funkcije</li>
-</ul>
-
-<a class="btn btn-secondary"
-href="mailto:vuk.markovic3001@gmail.com?subject=Premium%20paket">
-Izaberite Premium
-</a>
-
-</div>
-
-</div>
-</div>
-
-</section>
-
-
-<section id="rad">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Primeri sajtova</h2>
-<p>
-Jedan dizajn može se prilagoditi različitim vrstama biznisa.
-</p>
-</div>
-
-<div class="portfolio">
-
-<div class="project">
-<div class="project-content">
-<h3>🏠 Apartmani</h3>
-<p>Galerija, sobe, sadržaji, lokacija i kontakt.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-content">
-<h3>🍽️ Restoran</h3>
-<p>Meni, galerija, radno vreme, lokacija i kontakt.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-content">
-<h3>👕 Brend</h3>
-<p>Predstavljanje proizvoda i profesionalan online nastup.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-content">
-<h3>💈 Salon</h3>
-<p>Usluge, cenovnik, galerija i kontakt.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-content">
-<h3>🚗 Auto detailing</h3>
-<p>Usluge, slike radova, paketi i kontakt.</p>
-</div>
-</div>
-
-<div class="project">
-<div class="project-content">
-<h3>💍 Handmade</h3>
-<p>Galerija proizvoda, informacije i kontakt.</p>
-</div>
-</div>
-
-</div>
-</div>
-
-</section>
-
-
-<section class="dark" id="proces">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Kako radimo?</h2>
-<p>
-Jednostavan proces od prve poruke do gotovog sajta.
-</p>
-</div>
-
-<div class="steps">
-
-<div class="step">
-<div class="step-number">1</div>
-<div>
-<h3>Dogovor</h3>
-<p>
-Razgovaramo o vašem biznisu, potrebama, sadržaju i izgledu.
-</p>
-</div>
-</div>
-
-<div class="step">
-<div class="step-number">2</div>
-<div>
-<h3>Dizajn</h3>
-<p>
-Pravimo izgled sajta prilagođen vašem brendu.
-</p>
-</div>
-</div>
-
-<div class="step">
-<div class="step-number">3</div>
-<div>
-<h3>Izrada</h3>
-<p>
-Sajt se izrađuje i prilagođava telefonu i računaru.
-</p>
-</div>
-</div>
-
-<div class="step">
-<div class="step-number">4</div>
-<div>
-<h3>Objavljivanje</h3>
-<p>
-Nakon dogovora, sajt se postavlja online.
-</p>
-</div>
-</div>
-
-</div>
-</div>
-
-</section>
-
-
-<section id="faq">
-
-<div class="container">
-
-<div class="section-title">
-<h2>Česta pitanja</h2>
-<p>
-Odgovori na najčešća pitanja klijenata.
-</p>
-</div>
-
-<div class="faq">
-
-<details>
-<summary>Koliko traje izrada sajta?</summary>
-<p>
-Jednostavniji sajt može biti završen za oko 3 dana,
-u zavisnosti od zahteva i količine sadržaja.
-</p>
-</details>
-
-<details>
-<summary>Da li sajt radi na telefonu?</summary>
-<p>
-Da. Dizajn je prilagođen telefonu, tabletu i računaru.
-</p>
-</details>
-
-<details>
-<summary>Da li mogu da pošaljem svoje slike?</summary>
-<p>
-Da. Možete poslati fotografije, logo i druge materijale
-koje želite da budu na sajtu.
-</p>
-</details>
-
-<details>
-<summary>Da li mogu da tražim izmene?</summary>
-<p>
-Da. Detalji i izmene se dogovaraju tokom izrade.
-</p>
-</details>
-
-<details>
-<summary>Da li mogu da imam svoj domen?</summary>
-<p>
-Da. Sajt se može povezati sa vašim sopstvenim domenom.
-</p>
-</details>
-
-<details>
-<summary>Kako da počnemo?</summary>
-<p>
-Pošaljite upit putem kontakt dugmeta i dogovorićemo detalje.
-</p>
-</details>
-
-</div>
-</div>
-
-</section>
-
-
-<section class="contact" id="kontakt">
-
-<div class="container contact-box">
-
-<h2>Spremni za novi sajt?</h2>
-
-<p>
-Pošaljite nam email i napišite nekoliko informacija
-o vašem biznisu. Javićemo vam se i dogovoriti sve detalje.
-</p>
-
-<a class="btn btn-primary"
-href="mailto:vuk.markovic3001@gmail.com?subject=Zainteresovan%20sam%20za%20izradu%20sajta&body=Zdravo,%0A%0AZainteresovan/a%20sam%20za%20izradu%20sajta.%0A%0ANaziv%20biznisa:%0ATip%20biznisa:%0AŠta%20želim%20na%20sajtu:%0A%0AHvala!">
-✉️ Zatražite sajt
-</a>
-
-<br>
-
-<a class="email"
-href="mailto:vuk.markovic3001@gmail.com">
-vuk.markovic3001@gmail.com
-</a>
-
-</div>
-
-</section>
-
-
-<footer>
-<div class="container">
-© 2026 WebStudio · Izrada modernih web sajtova
-</div>
-</footer>
-
-</body>
-</html>
+Jasni CTA elementi, 
