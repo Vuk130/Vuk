@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WebStudio | Izrada sajtova</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1020;
+    color: white;
+    line-height: 1.6;
+}
+
+header {
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #252d45;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    color: #6d9cff;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #5b8cff;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #b8c0d4;
+    font-size: 18px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 28px;
+    background: #5b8cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #4778e8;
+}
+
+.section {
+    padding: 70px 8%;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 34px;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #151c32;
+    padding: 30px;
+    border-radius: 18px;
+    width: 290px;
+    border: 1px solid #29334f;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #b8c0d4;
+}
+
+.price {
+    margin-top: 18px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #5b8cff;
+}
+
+.contact {
+    background: #11182c;
+}
+
+.contact p {
+    color: #b8c0d4;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #8f98ad;
+    border-top: 1px solid #252d45;
+}
+
+@media (max-width: 650px) {
+
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 75px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .section {
+        padding: 55px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        WebStudio
+    </div>
+
+    <nav>
+        <a href="#usluge">Usluge</a>
+        <a href="#cene">Cene</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>
+        Moderan sajt za <span>vaš biznis.</span>
+    </h1>
+
+    <p>
+        Izrađujemo moderne,
